@@ -70,3 +70,5 @@ jobs:
           app-name: "unbiased-news-web"
           slot-name: "Production"
           package: .
+          verbose: true
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
