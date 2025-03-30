@@ -55,7 +55,7 @@ const NewsFeed: React.FC = () => {
     if (node) observer.current.observe(node);
   }, [loading, hasMore]);
 
-  const fetchNews = async (pageNum: number) => {
+  const fetchNews = useCallback(async (pageNum: number) => {
     try {
       setLoading(true);
       const response = await axios.get<NewsResponse>(`${process.env.REACT_APP_API_URL}/news`, {
@@ -80,11 +80,11 @@ const NewsFeed: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedCategory]);
 
   useEffect(() => {
     fetchNews(page);
-  }, [page, selectedCategory]);
+  }, [page, selectedCategory, fetchNews]);
 
   const handleCategoryChange = (category: string | null) => {
     setSelectedCategory(category);
