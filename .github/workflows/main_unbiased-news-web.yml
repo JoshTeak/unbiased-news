@@ -71,3 +71,4 @@ jobs:
           slot-name: "Production"
           package: .
           verbose: true
+          target-path: "wwwroot"
